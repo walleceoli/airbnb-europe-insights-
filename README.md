@@ -46,13 +46,25 @@ Foi removida a coluna Unnamed: 0, que havia sido criada automaticamente durante 
 
 ## Verificando  e corrigindo tipos de dados
 
-Durante a verificação dos tipos de dados, foi identificado que algumas colunas estavam com tipos inadequados.
+Durante a verificação dos tipos de dados, foi identificado que algumas colunas estavam com tipos **inadequados**.
 
-A coluna person_capacity, que indica a quantidade de pessoas suportada pelo imóvel, estava representada como *float*, o que não faz sentido, sendo então convertida para um tipo numérico *inteiro*.
+A coluna person_capacity, que indica a quantidade de pessoas suportada pelo imóvel, estava representada como **float**, o que não faz sentido, sendo então convertida para um tipo numérico **inteiro**.
 
-A coluna cleanliness_rating apresenta apenas valores discretos entre 2.0 e 10.0. Por se tratar de valores sem casas decimais reais, optou-se por representá-la como número *inteiro*.
+A coluna cleanliness_rating apresenta apenas valores discretos entre 2.0 e 10.0. Por se tratar de valores sem casas decimais reais, optou-se por representá-la como número **inteiro**.
 
 Já a coluna guest_satisfaction_overall representa uma pontuação agregada em uma escala de 0 a 100. Apesar de ser possível convertê-la para inteiro, ela foi mantida como variável numérica contínua float para preservar sua interpretação estatística.
+
+## Analisando a coluna realSum
+
+A análise teve início a partir de estatísticas descritivas, com foco inicial na base de dados referente aos **dias úteis**. Foram calculadas métricas como **média**, **mediana**, **desvio padrão** e **coeficiente de variação**.
+
+A partir dessas métricas, foi possível identificar que algumas cidades apresentam um alto nível de **volatilidade** nos preços. Cidades como Atenas, Viena e Londres exibem valores elevados de coeficiente de variação — sendo Atenas o caso mais **extremo**, com um valor próximo de **2,5**. Esse resultado indica a presença de imóveis que fogem significativamente do padrão ou da média, criando **outliers** que distorcem a média em direção a imóveis de **alto valor**.
+
+Para confirmar e aprofundar essa análise, foi calculado o **intervalo interquartil (IQR)**, uma vez que métricas baseadas no primeiro e terceiro quartis tendem a **reduzir a influência de valores extremos** que distorcem a média.
+
+Com isso, foi possível confirmar que as cidades citadas anteriormente realmente apresentam **outliers** muito **acima da média**. Em Atenas, por exemplo, a mediana é de 127.715, enquanto um único imóvel apresenta valor superior a **17.500**, influenciando fortemente as métricas baseadas na média. Esse comportamento também é observado em **Viena, Londres e Paris**.
+
+Em **contrapartida**, cidades como **Roma, Lisboa e Budapeste** apresentam distribuições de preços mais **homogêneas**, com médias mais representativas e **menor interferência de outliers**.
 
 ## Tecnologias Utilizadas
 
