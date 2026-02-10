@@ -55,7 +55,7 @@ A coluna cleanliness_rating apresenta apenas valores discretos entre 2.0 e 10.0.
 Já a coluna guest_satisfaction_overall representa uma pontuação agregada em uma escala de 0 a 100. Apesar de ser possível convertê-la para inteiro, ela foi mantida como variável numérica contínua float para preservar sua interpretação estatística.
 
 ## Analisando a coluna realSum
-
+### Analise dos dados dias uteis
 A análise teve início a partir de estatísticas descritivas, com foco inicial na base de dados referente aos **dias úteis**. Foram calculadas métricas como **média**, **mediana**, **desvio padrão** e **coeficiente de variação**.
 
 A partir dessas métricas, foi possível identificar que algumas cidades apresentam um alto nível de **volatilidade** nos preços. Cidades como Atenas, Viena e Londres exibem valores elevados de coeficiente de variação — sendo Atenas o caso mais **extremo**, com um valor próximo de **2,5**. Esse resultado indica a presença de imóveis que fogem significativamente do padrão ou da média, criando **outliers** que distorcem a média em direção a imóveis de **alto valor**.
@@ -65,6 +65,20 @@ Para confirmar e aprofundar essa análise, foi calculado o **intervalo interquar
 Com isso, foi possível confirmar que as cidades citadas anteriormente realmente apresentam **outliers** muito **acima da média**. Em Atenas, por exemplo, a mediana é de 127.715, enquanto um único imóvel apresenta valor superior a **17.500**, influenciando fortemente as métricas baseadas na média. Esse comportamento também é observado em **Viena, Londres e Paris**.
 
 Em **contrapartida**, cidades como **Roma, Lisboa e Budapeste** apresentam distribuições de preços mais **homogêneas**, com médias mais representativas e **menor interferência de outliers**.
+
+### Análise dos dados de fim de semana
+
+As análises aplicadas aos dados de **fim de semana** indicam que essa base apresenta **menor volatilidade** em comparação aos dados de dias úteis, conforme observado pelo **desvio padrão** e pelo **coeficiente de variação**.
+
+Apesar disso, algumas cidades — como **Viena, Londres, Berlim e Barcelona** — ainda apresentam **dispersão elevada** e presença de **outliers**.
+
+O maior coeficiente de variação nos dados de fim de semana foi **1,37** **(Viena)**, enquanto nos dados de dias úteis o maior valor foi **2,35** **(Atenas)**, evidenciando uma **redução significativa da volatilidade** nos fins de semana.
+
+A análise do intervalo interquartil **(IQR)** confirmou que os **principais outliers** concentram-se em **Viena e Londres**, porém com **padrões distintos**:
+
+* Londres apresenta uma cauda mais dispersa, com múltiplos níveis de preços elevados.
+
+* Viena possui preços mais concentrados, sendo a média fortemente impactada por um único imóvel de valor extremamente alto.
 
 ## Tecnologias Utilizadas
 
