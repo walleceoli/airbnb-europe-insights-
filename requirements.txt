@@ -5,3 +5,5 @@ matplotlib
 numpy
 os 
 glob
+sqlalchemy
+psycopg2-binary
