@@ -80,6 +80,19 @@ A análise do intervalo interquartil **(IQR)** confirmou que os **principais out
 
 * Viena possui preços mais concentrados, sendo a média fortemente impactada por um único imóvel de valor extremamente alto.
 
+## Carregando os dados para o PostgreSQL
+
+Para demonstrar minhas capacidades com a linguagem **SQL** e simular um processo real de **ETL**, decidi carregar toda a minha base de dados no **PostgreSQL**.
+
+Com isso, optei por organizar os dados em diferentes schemas:
+
+**Schema dados_tratados**: Trata-se de duas tabelas: uma contendo todos os dados de dias úteis e outra contendo as informações de fins de semana.
+
+**Schema estatisticas**: Contém uma única tabela com todas as estatísticas descritivas criadas no primeiro processo de análise realizado no notebook.
+
+Para melhorar a relação entre essas tabelas, decidi criar uma nova coluna em ambos os DataFrames, denominada **period**, que indica a qual período os dados pertencem (dias úteis ou fim de semana). Essa coluna funciona como uma **chave estrangeira** para relacionar os DataFrames.
+
+
 ## Tecnologias Utilizadas
 
 As seguintes tecnologias e bibliotecas foram utilizadas ao longo do projeto:
@@ -89,6 +102,6 @@ As seguintes tecnologias e bibliotecas foram utilizadas ao longo do projeto:
 - **numpy** → operações numéricas e suporte a cálculos estatísticos
 - **matplotlib** → visualização de dados estática
 - **plotly** → visualizações interativas
-- **streamlit** → criação de dashboards interativos
 - **os** → manipulação de diretórios e caminhos de arquivos
 - **glob** → leitura automatizada de múltiplos arquivos CSV
+- **sqlalchemy** → Integração entre o Notbook e o banco de dados PostegreSQL
